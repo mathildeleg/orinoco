@@ -39,6 +39,7 @@ function createCard(product){
                                         ${varnishList}
                                         </select>
                                     </div>
+                                    <button type="submit" id="add-to-basket">Ajouter au panier <i class="fas fa-cart-plus"></i> </button>
                                 </div>
                             </div>`
     return divProduct;
