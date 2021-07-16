@@ -21,6 +21,12 @@ function getId(){
 
 function createCard(product){
     const divProduct = document.createElement("div");
+    // fetch varnish list
+    let varnishList = '';
+    for (let varnish in product.varnish){
+        varnishList += `<option value="${product.varnish[varnish]}">${product.varnish[varnish]}</option>`;
+    }
+    // generates product card
     divProduct.innerHTML = `<div class="card">
                                 <img src="${product.imageUrl}" class="img-fluid card-img-top" alt="product image"></img>
                                 <div class="card-body">
@@ -29,8 +35,8 @@ function createCard(product){
                                     <p>${product.price/100}€</p>
                                     <div>
                                         <label for="varnish-choice">Vernis :</label>
-                                        <select name="varnish" id="varnish-choices>
-
+                                        <select name="varnish" id="varnish-choices">
+                                        ${varnishList}
                                         </select>
                                     </div>
                                 </div>
