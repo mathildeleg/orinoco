@@ -1,9 +1,23 @@
 // Fetch API
-
 async function fetchProductById(id){
     const res = await fetch(`http://localhost:3000/api/furniture/${id}`);
     const product = await res.json();
     showProduct(product);
+
+// Create button add to basket with event listener
+    const addToBasket = document.querySelector("#add-to-basket");
+    addToBasket.addEventListener("click", (event)=>{
+        event.preventDefault();
+        // Get id of varnish selected
+        const varnishChoices = document.querySelector("#varnish-choices").value;
+        let productAddedToBasket = {
+        productImage: product.imageUrl,
+        productName: product.name,
+        productPrice: product.price / 100,
+        productVarnish: varnishChoices,
+        } 
+        console.log(productAddedToBasket);
+    })
 }
 
 window.onload = async () => {
@@ -11,22 +25,20 @@ window.onload = async () => {
 }
 
 // Get url id
-
 function getId(){
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get("id");
 }
 
 // Generates product selected
-
 function createCard(product){
     const divProduct = document.createElement("div");
-    // fetch varnish list
+    // fetch list of varnishes
     let varnishList = '';
     for (let varnish in product.varnish){
         varnishList += `<option value="${product.varnish[varnish]}">${product.varnish[varnish]}</option>`;
     }
-    // generates product card
+    // HTML of product card
     divProduct.innerHTML = `<div class="card">
                                 <img src="${product.imageUrl}" class="img-fluid card-img-top" alt="product image"></img>
                                 <div class="card-body">
@@ -39,12 +51,13 @@ function createCard(product){
                                         ${varnishList}
                                         </select>
                                     </div>
-                                    <button type="submit" id="add-to-basket">Ajouter au panier <i class="fas fa-cart-plus"></i> </button>
+                                    <button type="submit" id="add-to-basket">Ajouter au panier <i class="fas fa-cart-plus"></i></button>
                                 </div>
                             </div>`
     return divProduct;
 }
 
+// Generates product card
 function showProduct(productData){
     const card = createCard(productData);
     const selectedProductContainer = document.getElementById("selected-product");
