@@ -11,11 +11,11 @@ async function fetchProductById(id){
             // Get id of varnish selected
             const varnishChoices = document.querySelector("#varnish-choices").value;
             let productAddedToBasket = {
-            productImage: product.imageUrl,
-            productName: product.name,
-            productPrice: product.price / 100,
-            productVarnish: varnishChoices,
-            } 
+            image: product.imageUrl,
+            name: product.name,
+            price: product.price / 100,
+            varnish: varnishChoices,
+            }
             console.log(productAddedToBasket);
 
     // Store data of product(s) added to basket in local storage
@@ -31,7 +31,7 @@ async function fetchProductById(id){
         // If products already are in the local storage
         if(basketContent){
             basketLocalStorage()
-                    // If there are no products in the local storage
+        // If there are no products in the local storage
         }else{
             basketContent = [];
             basketLocalStorage()
@@ -66,9 +66,7 @@ function createCard(product){
                                     <p>${product.price/100}€</p>
                                     <div>
                                         <label for="varnish-choice">Vernis :</label>
-                                        <select name="varnish" id="varnish-choices">
-                                        ${varnishList}
-                                        </select>
+                                        <select name="varnish" id="varnish-choices">${varnishList}</select>
                                     </div>
                                     <button type="submit" id="add-to-basket">Ajouter au panier <i class="fas fa-cart-plus"></i></button>
                                 </div>
