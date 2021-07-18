@@ -4,20 +4,39 @@ async function fetchProductById(id){
     const product = await res.json();
     showProduct(product);
 
-// Create button add to basket with event listener
-    const addToBasket = document.querySelector("#add-to-basket");
-    addToBasket.addEventListener("click", (event)=>{
-        event.preventDefault();
-        // Get id of varnish selected
-        const varnishChoices = document.querySelector("#varnish-choices").value;
-        let productAddedToBasket = {
-        productImage: product.imageUrl,
-        productName: product.name,
-        productPrice: product.price / 100,
-        productVarnish: varnishChoices,
-        } 
-        console.log(productAddedToBasket);
-    })
+    // Create button add to basket with event listener
+        const addToBasket = document.querySelector("#add-to-basket");
+        addToBasket.addEventListener("click", (event)=>{
+            event.preventDefault();
+            // Get id of varnish selected
+            const varnishChoices = document.querySelector("#varnish-choices").value;
+            let productAddedToBasket = {
+            productImage: product.imageUrl,
+            productName: product.name,
+            productPrice: product.price / 100,
+            productVarnish: varnishChoices,
+            } 
+            console.log(productAddedToBasket);
+
+    // Store data of product(s) added to basket in local storage
+        // Convert data from local storage into JSON format
+        let basketContent = JSON.parse(localStorage.getItem('productInBasket'));
+
+        function basketLocalStorage(){
+            basketContent.push(productAddedToBasket);
+            localStorage.setItem('productInBasket', JSON.stringify(basketContent));
+            console.log(basketContent);
+        }
+
+        // If products already are in the local storage
+        if(basketContent){
+            basketLocalStorage()
+                    // If there are no products in the local storage
+        }else{
+            basketContent = [];
+            basketLocalStorage()
+        }
+        })
 }
 
 window.onload = async () => {
