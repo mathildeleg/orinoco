@@ -15,7 +15,7 @@ function createBasketCard(basketContent){
                                 <div class="card-body">
                                     <img src="${basketContent.image}" class="img-fluid card-img-top" alt="product image"></img>
                                     <h2 class="card-title">${basketContent.name}</h2>
-                                    <p>${basketContent.price / 100}€</p>
+                                    <p>${basketContent.price}€</p>
                                     <p>${basketContent.varnish}</p>
                                 </div>
                             </div>`;
