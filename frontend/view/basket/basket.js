@@ -17,6 +17,7 @@ function createBasketCard(basketContent){
                                     <h2 class="card-title">${basketContent.name}</h2>
                                     <p>Vernis : ${basketContent.varnish}</p>
                                     <p>Prix : ${basketContent.price}€</p>
+                                    <button type="submit">Retirer du panier</button>
                                 </div>
                             </div>`;
     return basketCard;
@@ -50,6 +51,7 @@ function showBasket(basketItemList){
         // Create and insert totalPrice HTML
         const totalPriceDiv = `<div class="card">
                                     <div class="card-body">Prix total de votre panier : ${totalPrice} €</div>
+                                    <button type="submit">Valider votre panier</button>
                                 </div>`
         basketCards.insertAdjacentHTML("beforeend", totalPriceDiv);
     }
