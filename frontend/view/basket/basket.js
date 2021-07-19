@@ -23,9 +23,17 @@ function createBasketCard(basketContent){
 }
 
 function showBasket(basketItemList){
-    const card = basketItemList.map(createBasketCard);
+    const card = basketItemList && basketItemList.map(createBasketCard);
     const basketCards = document.getElementById("basket-container");
-    card.forEach(div => {
+    if(card === null){
+        const emptyBasket = `<div class="card">
+                                <div class="card-body">Votre panier est vide</div>
+                            </div>`;
+        basketCards.innerHTML = emptyBasket;
+        return emptyBasket;
+    }else{
+        card.forEach(div => {
         basketCards.append(div);
-    })
+        })
+    }   
 }
