@@ -113,16 +113,16 @@ function createForm(){
         }
 
         // Ensure first name field is correctly filled out
-        function checkName(name){
-            if(/^[A-Za-z][^0-9_!¡?÷?¿\\+=@#$%ˆ&*¨(){}|~<>;:[\]]{1,20}$/.test(name)){
-                return name;
+        function checkText(text){
+            if(/^[A-Za-z][^0-9_!¡?÷?¿\\/+=@#$%ˆ&*¨(){}|~<>;:[\]]{1,20}$/.test(text)){
+                return text;
             }
             else{
                 return null;
             }
         }
             // Check first name
-            const checkedFirstName = checkName(formData.firstName);
+            const checkedFirstName = checkText(formData.firstName);
             // Store data from the form in local and convert it into JSON format
             if(checkedFirstName){
                 localStorage.setItem("formData", JSON.stringify(formData));
@@ -132,7 +132,7 @@ function createForm(){
 
         // Ensure last name field is correctly filled out
             // Check last name
-            const checkedLastName = checkName(formData.lastName);
+            const checkedLastName = checkText(formData.lastName);
             // Store data from the form in local and convert it into JSON format
             if(checkedLastName){
                 localStorage.setItem("formData", JSON.stringify(formData));
@@ -142,7 +142,7 @@ function createForm(){
 
         // Ensure city field is correctly filled out
             // Check city
-            const checkedCity = checkName(formData.city);
+            const checkedCity = checkText(formData.city);
             // Store data from the form in local and convert it into JSON format
             if(checkedCity){
                 localStorage.setItem("formData", JSON.stringify(formData));
@@ -152,7 +152,7 @@ function createForm(){
 
         // Ensure address field is correctly filled out
         function checkAddress(address){
-            if(/^([0-9]{1,})[^0-9_!¡?÷?¿\\+=@#$%ˆ&*(){}|~<>;:[\]]{3,}$/.test(address)){
+            if(/^([0-9]{1,6})([a-zA-Z\s][^0-9._!¡?÷?¿\\/+=@#$%ˆ&*(){}|~<>;:[\]]{3,})$/.test(address)){
                 return address;
             }else{
                 return null;
@@ -169,7 +169,7 @@ function createForm(){
 
         // Ensure email field is correctly filled out
         function checkEmail(email){
-            if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+            if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*))@((\[[0-9]\.{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
                 return email;
             }else{
                 return null;
