@@ -10,33 +10,32 @@ async function fetchProductById(id){
             event.preventDefault();
             // Get id of varnish selected
             const varnishChoices = document.querySelector("#varnish-choices").value;
+            // Get data from the product
             let productAddedToBasket = {
             image: product.imageUrl,
             name: product.name,
             price: product.price / 100,
             varnish: varnishChoices,
             }
-            console.log(productAddedToBasket);
 
-    // Store data of product(s) added to basket in local storage
-        // Convert data from local storage into JSON format
-        let basketContent = JSON.parse(localStorage.getItem('productInBasket'));
+            // Convert data from local storage into JSON format
+            let basketContent = JSON.parse(localStorage.getItem("productInBasket"));
 
-        function basketLocalStorage(){
-            basketContent.push(productAddedToBasket);
-            localStorage.setItem('productInBasket', JSON.stringify(basketContent));
-            console.log(basketContent);
-        }
+            // Store data of product(s) added to basket in local storage
+            function basketLocalStorage(){
+                basketContent.push(productAddedToBasket);
+                localStorage.setItem("productInBasket", JSON.stringify(basketContent));
+            }
 
-        // If products already are in the local storage
-        if(basketContent){
-            basketLocalStorage()
-        // If there are no products in the local storage
-        }else{
-            basketContent = [];
-            basketLocalStorage()
-        }
-        })
+            // If products already are in the local storage
+            if(basketContent){
+                basketLocalStorage()
+            // If there are no products in the local storage
+            }else{
+                basketContent = [];
+                basketLocalStorage()
+            }
+            })
 }
 
 window.onload = async () => {
