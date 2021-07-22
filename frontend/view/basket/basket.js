@@ -109,7 +109,7 @@ function createForm(){
             lastName: document.querySelector("#last-name").value,
             address: document.querySelector("#address").value,
             city: document.querySelector("#city").value,
-            email: document.querySelector("#email").value,
+            email: document.querySelector("#email").value.toLowerCase(),
         }
 
         // Ensure first name field is correctly filled out
