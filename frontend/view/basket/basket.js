@@ -181,29 +181,3 @@ function initSubmitButton(){
 // }
 
 // console.log(removeItem());
-
-// Get data from local storage for the form
-// function getDataForForm(){
-//     localStorage.setItem("first-name", document.querySelector("#first-name").value);
-//     console.log(document.querySelector("#first-name").value);
-// }
-
-// function createArrayOfPrices(){
-// let sumPrice = [];
-// for(let i = 0; i < basketItemList.length; i++){
-//     const productsPrices = basketItemList[i].price;
-//     sumPrice.push(productsPrices)
-// }
-// }
-
-// function calculateTotalPrice(){
-// const reducer = (accumulator, currentValue) => accumulator + currentValue;
-// const totalPrice = sumPrice.reduce(reducer, 0);
-// }
-
-// function insertTotalPrice(){
-//     const totalPriceDiv = `<div class="card">
-//                                     <div class="card-body">Prix total de votre panier : ${totalPrice} €</div>
-//                                 </div>`
-//     basketCards.insertAdjacentHTML("beforeend", totalPriceDiv);
-// }
