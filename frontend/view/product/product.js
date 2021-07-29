@@ -16,6 +16,7 @@ async function fetchProductById(id){
             name: product.name,
             price: product.price / 100,
             varnish: varnishChoices,
+            id: product._id,
             }
 
             // Convert data from local storage into JSON format
