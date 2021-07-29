@@ -1,3 +1,4 @@
+// 
 function isTextValid(text){
         return /^[A-Za-z][^0-9_!¡?÷?¿\\/+=@#$%ˆ&*¨(){}|~<>;:[\]]{1,20}$/.test(text)
 }
@@ -14,7 +15,7 @@ const FormValidation = {isTextValid, isAddressValid, isEmailValid};
 
 // Fetch data for content of the basket
 function getBasketContent(){
-    let basketItemList = JSON.parse(localStorage.getItem('productInBasket'));
+    const basketItemList = JSON.parse(localStorage.getItem('productInBasket'));
     displayBasket(basketItemList);
 }
 
@@ -104,27 +105,70 @@ function displayForm(){
                     <div>
                         <label for="first-name">Votre prénom</label>
                         <input type="text" name="first-name" id="first-name" required>
+                        <div id="first-name-error"></div>
                     </div>
                     <div>
                         <label for="last-name">Votre nom</label>
                         <input type="text" name="last-name" id="last-name" required>
+                        <div id="last-name-error"></div>
                     </div>
                     <div>
                         <label for="address">Votre adresse</label>
                         <textarea name="address" id="address" required></textarea>
+                        <div id="address-error"></div>
                     </div>
                     <div>
                         <label for="city">Votre ville</label>
                         <input type="text" name="city" id="city" required>
+                        <div id="city-error"></div>
                     </div>
                     <div>
                         <label for="email">Votre adresse e-mail</label>
                         <input type="email" name="email" id="email" required>
+                        <div id="email-error"></div>
                     </div>
 		            <button type="submit" id="submitOrder">Valider votre commande</button>
                 </form>
             </div>`;
     form.insertAdjacentHTML("afterend", formDiv);
+}
+
+function displayError(formData){
+    displayErrorFirstName(formData);
+    displayErrorLastName(formData);
+    displayErrorCity(formData);
+    displayErrorAddress(formData);
+    displayErrorEmail(formData);
+}
+
+function displayErrorFirstName(formData){
+    if(!FormValidation.isTextValid(formData.firstName)){
+        document.getElementById("first-name-error").innerText = `error first name`;
+    }
+}
+
+function displayErrorLastName(formData){
+    if(!FormValidation.isTextValid(formData.lastName)){
+        document.getElementById("last-name-error").innerText = `error last name`;
+    }
+}
+
+function displayErrorCity(formData){
+    if(!FormValidation.isTextValid(formData.city)){
+        document.getElementById("city-error").innerText = `error city`;
+    }
+}
+
+function displayErrorAddress(formData){
+    if(!FormValidation.isTextValid(formData.address)){
+        document.getElementById("address-error").innerText = `error address`;
+    }
+}
+
+function displayErrorEmail(formData){
+    if(!FormValidation.isTextValid(formData.email)){
+        document.getElementById("email-error").innerText = `error email`;
+    }
 }
 
 function isFormValid(formData){
@@ -155,7 +199,7 @@ function initSubmitButton(){
             if(isFormValid(formData)){
                 localStorage.setItem("formData", JSON.stringify(formData));
             }else{
-                alert("Veuillez remplir le formulaire correctement");
+                displayError(formData);
             }
     })
 }
