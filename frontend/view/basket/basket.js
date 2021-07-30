@@ -108,13 +108,15 @@ function displayBasket(basketItemList){
 
 // Removes product from basket
 function removeItemFromBasket(idItem){
+    // Get basket content
     const basket = JSON.parse(localStorage.getItem("productInBasket"));
-    console.log("basket", basket);
+    // Find id of the product you want to remove from basket
     const isIdItemEqual = (item) => item.id === idItem;
     const index = basket.findIndex(isIdItemEqual);
-    console.log("index", index);
-    basket.splice(index, 1);
-    localStorage.setItem("productInBasket", JSON.stringify(basket));
+    // Remove product selected from local storage
+    const newbasket = basket.filter((item,i) => i !== index)
+    localStorage.setItem("productInBasket", JSON.stringify(newbasket));
+    // Reload the page
     window.location.href = "/frontend/view/basket/basket.html";
 }
 
@@ -213,8 +215,8 @@ function isFormValid(formData){
         return false;
 }
 
-function initSubmitButton(){
 // Create button "submit order" with event listener
+function initSubmitButton(){
     const btnSubmitOrder = document.querySelector("#submitOrder");
     btnSubmitOrder.addEventListener("click", (event) =>{
         event.preventDefault();
