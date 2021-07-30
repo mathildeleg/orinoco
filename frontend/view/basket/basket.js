@@ -49,7 +49,7 @@ function isBasketEmpty(basketItemList){
     return basketItemList.length === 0;
 }
 
-// Basket is empty, so display empty div
+// If basket is empty, display empty div
 function displayEmptyBasket(){
     const basketCards = document.getElementById("basket-container");
     const emptyBasket = `<div class="card">
@@ -58,7 +58,7 @@ function displayEmptyBasket(){
     basketCards.innerHTML = emptyBasket;
 }
 
-// Basket is full, so display div with the products in the basket
+// If basket is full, display div with the products in the basket
 function displayCardList(basketItemList){
     const basketCards = document.getElementById("basket-container");
     const HTMLCardList = createHTMLCardList(basketItemList);
@@ -79,11 +79,12 @@ function getBasketPrice(basketItemList){
 // Display the total in the div of the basket
 function displayPrice(totalPrice){
     const basketCards = document.getElementById("basket-container");
-    // Create and insert totalPrice HTML
+    // Create totalPrice HTML
     const totalPriceDiv = `<div class="card">
                                 <div class="card-body">Prix total de votre panier : ${totalPrice} €</div>
                                 <button type="submit">Valider votre panier</button>
                             </div>`
+    // insert totalPrice HTML below the product cards
     basketCards.insertAdjacentHTML("beforeend", totalPriceDiv);
 }
 
@@ -92,11 +93,14 @@ function displayBasket(basketItemList){
     // If basket is empty, tell user basket is empty
     if (isBasketEmpty(basketItemList)){
         displayEmptyBasket();
-    // If basket is filled with products, display list of products in basket
+    // If basket is filled with products...
     }else{
+        // display list of products in basket
         displayCardList(basketItemList);
+        // with total price of the basket
         const totalPrice = getBasketPrice(basketItemList);
         displayPrice(totalPrice);
+        // display the form
         displayForm();
         initSubmitButton();
     }
@@ -135,13 +139,13 @@ function displayForm(){
                         <input type="email" name="email" id="email" required>
                         <div id="email-error"></div>
                     </div>
-		            <button type="submit" id="submitOrder">Valider votre commande</button>
+		            <button id="submitOrder">Valider votre commande</button>
                 </form>
             </div>`;
     form.insertAdjacentHTML("afterend", formDiv);
 }
 
-// Display error for each part of the form to the user by using the functions below
+// // Display error for each part of the form to the user by using the functions below
 function displayError(formData){
     displayErrorFirstName(formData);
     displayErrorLastName(formData);
@@ -150,42 +154,42 @@ function displayError(formData){
     displayErrorEmail(formData);
 }
 
-// Display error in the "First Name" part of the form to the user
+// // Display error in the "First Name" part of the form to the user
 function displayErrorFirstName(formData){
     if(!FormValidation.isTextValid(formData.firstName)){
         document.getElementById("first-name-error").innerText = `error first name`;
     }
 }
 
-// Display error in the "Last Name" part of the form to the user
+// // Display error in the "Last Name" part of the form to the user
 function displayErrorLastName(formData){
     if(!FormValidation.isTextValid(formData.lastName)){
         document.getElementById("last-name-error").innerText = `error last name`;
     }
 }
 
-// Display error in the "City" part of the form to the user
+// // Display error in the "City" part of the form to the user
 function displayErrorCity(formData){
     if(!FormValidation.isTextValid(formData.city)){
         document.getElementById("city-error").innerText = `error city`;
     }
 }
 
-// Display error in the "Address" part of the form to the user
+// // Display error in the "Address" part of the form to the user
 function displayErrorAddress(formData){
     if(!FormValidation.isTextValid(formData.address)){
         document.getElementById("address-error").innerText = `error address`;
     }
 }
 
-// Display error in the "Email" part of the form to the user
+// // Display error in the "Email" part of the form to the user
 function displayErrorEmail(formData){
     if(!FormValidation.isTextValid(formData.email)){
         document.getElementById("email-error").innerText = `error email`;
     }
 }
 
-// Check whether the form is valid (if it's correctly filled)
+// // Check whether the form is valid (if it's correctly filled)
 function isFormValid(formData){
     if(FormValidation.isTextValid(formData.firstName) 
     && FormValidation.isTextValid(formData.lastName) 
@@ -198,10 +202,10 @@ function isFormValid(formData){
 }
 
 function initSubmitButton(){
-    // Create button "submit order" with event listener
-    // const btnSubmitOrder = document.querySelector("#submitOrder");
-    // btnSubmitOrder.addEventListener("click", (event) =>{
-    //     event.preventDefault();
+// Create button "submit order" with event listener
+    const btnSubmitOrder = document.querySelector("#submitOrder");
+    btnSubmitOrder.addEventListener("click", (event) =>{
+        event.preventDefault();
         // Get data from the form
         const formData = {
             firstName: document.querySelector("#first-name").value,
@@ -213,7 +217,8 @@ function initSubmitButton(){
         // Store data from the form in local and convert it into JSON format
             if(!isFormValid(formData)){
                 displayError(formData);
+            }else{
+                // remove displayError(formData);
             }
-    // })
+    })
 }
-
