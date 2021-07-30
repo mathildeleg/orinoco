@@ -106,6 +106,18 @@ function displayBasket(basketItemList){
     }
 }
 
+// Removes product from basket
+function removeItemFromBasket(idItem){
+    const basket = JSON.parse(localStorage.getItem("productInBasket"));
+    console.log("basket", basket);
+    const isIdItemEqual = (item) => item.id === idItem;
+    const index = basket.findIndex(isIdItemEqual);
+    console.log("index", index);
+    basket.splice(index, 1);
+    localStorage.setItem("productInBasket", JSON.stringify(basket));
+    window.location.href = "/frontend/view/basket/basket.html";
+}
+
 // Display the form after the basket
 function displayForm(){
     const form = document.querySelector("#basket-container");
