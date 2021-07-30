@@ -232,7 +232,7 @@ function initSubmitButton(){
             if(!isFormValid(formData)){
                 displayError(formData);
             }else{
-                // remove displayError(formData);
+                window.location.href = "/frontend/view/order/order.html";
             }
     })
 }
