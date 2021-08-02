@@ -83,5 +83,3 @@ function addProductToBasket(product){
         }
     })
 }
-
-console.log(addProductToBasket(product));

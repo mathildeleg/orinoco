@@ -215,6 +215,35 @@ function isFormValid(formData){
         return false;
 }
 
+// Fetch order data (id, list of products and form)
+async function postOrder(){
+    // Get data from the form
+    const formData = {
+        firstName: document.querySelector("#first-name").value,
+        lastName: document.querySelector("#last-name").value,
+        address: document.querySelector("#address").value,
+        city: document.querySelector("#city").value,
+        email: document.querySelector("#email").value.toLowerCase(),
+    }
+    // Get list of products in basket
+    const basketItemList = JSON.parse(localStorage.getItem("productInBasket"));
+    const productsId = basketItemList.map(product => product.id);
+    // Fetch order data (id, list of products and form)
+    const res = await fetch("http://localhost:3000/api/furniture/order", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            contact: {firstName: formData.firstName, lastName: formData.lastName, address: formData.address, city: formData.city, email: formData.email},
+            products: productsId,
+        })
+    })
+    const order = await res.json();
+    localStorage.setItem("order", JSON.stringify(order));
+}
+
 // Create button "submit order" with event listener
 function initSubmitButton(){
     const btnSubmitOrder = document.querySelector("#submitOrder");
@@ -228,11 +257,16 @@ function initSubmitButton(){
             city: document.querySelector("#city").value,
             email: document.querySelector("#email").value.toLowerCase(),
         }
-        // Store data from the form in local and convert it into JSON format
-            if(!isFormValid(formData)){
-                displayError(formData);
-            }else{
-                window.location.href = "/frontend/view/order/order.html";
+        // 
+        if(!isFormValid(formData)){
+            displayError(formData);
+        }else{
+            // Fetch order data (id, list of products and form)
+            async () => {
+            postOrder();
             }
+            // Load to confirmation page
+            window.location.href = "/frontend/view/order/order.html";
+        }
     })
 }
