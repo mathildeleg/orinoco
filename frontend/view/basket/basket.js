@@ -82,7 +82,6 @@ function displayPrice(totalPrice){
     // Create totalPrice HTML
     const totalPriceDiv = `<div class="card">
                                 <div class="card-body">Prix total de votre panier : ${totalPrice} €</div>
-                                <button type="submit">Valider votre panier</button>
                             </div>`
     // insert totalPrice HTML below the product cards
     basketCards.insertAdjacentHTML("beforeend", totalPriceDiv);
@@ -262,9 +261,7 @@ function initSubmitButton(){
             displayError(formData);
         }else{
             // Fetch order data (id, list of products and form)
-            async () => {
             postOrder();
-            }
             // Load to confirmation page
             window.location.href = "/frontend/view/order/order.html";
         }
