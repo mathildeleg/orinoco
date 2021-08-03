@@ -4,16 +4,14 @@ function fetchOrder(){
     displayOrderId(order);
     displayProductsOrdered();
     displayFormData(order);
+    displayTotalPrice();
 }
 
 window.onload = fetchOrder();
 
 function createHTMLOrderId(order){
     const orderIdHTML = document.createElement("div");
-    orderIdHTML.innerHTML = `
-        <div class="card-text">
-            ${order.orderId}
-        </div>`
+    orderIdHTML.innerHTML = `<div class="card-text">${order.orderId}</div>`
     return orderIdHTML;
 }
 
@@ -50,4 +48,26 @@ function displayProductsOrdered(){
         productsCards.append(product.name);
         productsCards.append(product.price / 100);
     });
+}
+
+function getBasketPrice(){
+    // Put price of each product currently in the basket in an array
+    const basketItemList = JSON.parse(localStorage.getItem('productInBasket'));
+    const basketPriceList = basketItemList.map((item) => item.price);
+    // Calculate total of basket
+    const reducer = (totalPrice, itemPrice) => totalPrice + itemPrice;
+    return basketPriceList.reduce(reducer, 0);
+}
+
+function createHTMLTotalPrice(){
+    const totalPrice = getBasketPrice();
+    const totalPriceHTML = document.createElement("div");
+    totalPriceHTML.innerHTML = "<div class='card-text'>" + totalPrice + "€" + "</div>"
+    return totalPriceHTML;
+}
+
+function displayTotalPrice(){
+    const totalPriceDiv = createHTMLTotalPrice();
+    const totalPriceHTML = document.getElementById("total-price");
+    totalPriceHTML.append(totalPriceDiv);
 }
