@@ -6,18 +6,18 @@ function fetchOrder(){
     displayFormData(order);
 }
 
-window.onload = async () => {
-    fetchOrder();
-}
+window.onload = fetchOrder();
 
 function createHTMLOrderId(order){
-    const orderId = document.createElement("div");
-    orderId.innerHTML = `<div class="card-text">${order.orderId}</div>`
-    return orderId;
+    const orderIdHTML = document.createElement("div");
+    orderIdHTML.innerHTML = `
+        <div class="card-text">
+            ${order.orderId}
+        </div>`
+    return orderIdHTML;
 }
 
-function displayOrderId(orderId){
-    const order = JSON.parse(localStorage.getItem("order"));
+function displayOrderId(order){
     const orderIdDiv = createHTMLOrderId(order);
     const orderHTML = document.getElementById("order-id");
     orderHTML.append(orderIdDiv);
