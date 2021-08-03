@@ -123,38 +123,44 @@ function removeItemFromBasket(idItem){
 function displayForm(){
     const form = document.querySelector("#basket-container");
     const formDiv = 
-            `<div>
-                <form method="post">
-                    <h2>Vos coordonnées</h2>
+        `<div>
+            <h2 class="row justify-content-md-center mt-4">Vos coordonnées</h2>
+            <form class="row g-3" method="post">
+                <div class="col-md-6">
+                  <label for="first-name" class="form-label m-2">Votre prénom</label>
+                  <input type="text" class="form-control" name="first-name" id="first-name" required>
+                  <div class="invalid-feedback" id="first-name-error"></div>
+                </div>
 
-                    <div>
-                        <label for="first-name">Votre prénom</label>
-                        <input type="text" name="first-name" id="first-name" required>
-                        <div id="first-name-error"></div>
-                    </div>
-                    <div>
-                        <label for="last-name">Votre nom</label>
-                        <input type="text" name="last-name" id="last-name" required>
-                        <div id="last-name-error"></div>
-                    </div>
-                    <div>
-                        <label for="address">Votre adresse</label>
-                        <textarea name="address" id="address" required></textarea>
-                        <div id="address-error"></div>
-                    </div>
-                    <div>
-                        <label for="city">Votre ville</label>
-                        <input type="text" name="city" id="city" required>
-                        <div id="city-error"></div>
-                    </div>
-                    <div>
-                        <label for="email">Votre adresse e-mail</label>
-                        <input type="email" name="email" id="email" required>
-                        <div id="email-error"></div>
-                    </div>
-		            <button id="submitOrder">Valider votre commande</button>
-                </form>
-            </div>`;
+                <div class="col-md-6">
+                  <label for="last-name" class="form-label m-2">Votre nom</label>
+                  <input type="text" class="form-control" name="last-name" id="last-name" required>
+                  <div id="last-name-error"></div>
+                </div>
+
+                <div class="col-12">
+                  <label for="address" class="form-label m-2">Votre adresse</label>
+                  <input type="text" class="form-control" name="address" id="address" for="address" placeholder="50 rue Pasteur" required>
+                  <div id="address-error"></div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="city" class="form-label m-2">Votre ville</label>
+                  <input type="text" class="form-control" name="city" id="city" for="city" required>
+                  <div id="city-error"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email" class="form-label m-2">Votre adresse e-mail</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                    <div id="email-error"></div>
+                  </div>
+
+                <div class="col-12">
+                  <button type="submit" id="submitOrder" class="btn btn-primary mt-3 mb-3">Valider votre commande</button>
+                </div>
+            </form>
+        </div>`;
     form.insertAdjacentHTML("afterend", formDiv);
 }
 
