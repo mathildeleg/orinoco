@@ -25,7 +25,7 @@ function createHTMLProductCard(product){
         varnishList += `<option value="${product.varnish[varnish]}">${product.varnish[varnish]}</option>`;
     }
     // HTML of product card
-    divProduct.innerHTML = `<div class="card">
+    divProduct.innerHTML = `<div class="card m-4">
                                 <img src="${product.imageUrl}" class="img-fluid card-img-top" alt="product image"></img>
                                 <div class="card-body">
                                     <h2 class="card-title">${product.name}</h2>
