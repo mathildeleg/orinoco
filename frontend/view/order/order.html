@@ -45,25 +45,30 @@
     <section class="container">
         <div id="order-container">
             <!-- Confirmation de la commande -->
-            <div class="card">
+            <div class="card border-dark m-2">
+                <h2 class="card-header text-center p-3">Merci de votre commande !</h2>
                 <div class="card-body">
-                    <h2 class="card-title">Merci de votre commande !</h2>
+                    <div class="row px-4">
+                        <h5 class="card-title p-2">Numéro de votre commande :</h5>
+                        <div id="order-id" class="p-2"></div>
+                    </div>
 
-                    <div class="card-text">Numéro de votre commande :</div>
-                    <div id="order-id"></div>
-
-                    <div class="card-text">Rappel de votre commande : </div>
-                    <div id="order-products"></div>
-
-                    <div class="card-text">Prix total de votre commande :</div>
-                    <div id="total-price"></div>
+                    <div class="row px-4">
+                        <h5 class="card-title p-2">Rappel de votre commande : </h5>
+                        <div id="order-products" class="p-2"></div>
+                    </div>
+                    
+                    <div class="row px-4">
+                        <h5 class="card-title p-2">Prix total de votre commande :</h5>
+                        <div id="total-price" class="p-2"></div>
+                    </div>
                 </div>
             </div>
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Informations de paiement :</h3>
-                            <div id="form-data"></div>
+                    <div class="card border-dark m-2 mt-5">
+                            <h3 class="card-title text-center m-3">Informations de paiement :</h3>
+                        <div id="form-data" class="card-text">
+
                         </div>
                     </div>
         </div>
