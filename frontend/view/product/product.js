@@ -30,12 +30,20 @@ function createHTMLProductCard(product){
                                 <div class="card-body">
                                     <h2 class="card-title">${product.name}</h2>
                                     <p class="card-text">${product.description}</p>
-                                    <p>${product.price/100}€</p>
-                                    <div>
-                                        <label for="varnish-choice">Vernis :</label>
-                                        <select name="varnish" id="varnish-choices">${varnishList}</select>
+                                    <p class="card-text">${product.price/100}€</p>
+                                    <div class="container d-flex justify-content-center">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="d-flex flex-column m-2">
+                                                <div class="d-flex flex-row align-center">
+                                                    <label for="varnish-choices">Vernis : </label>
+                                                    <div><select name="varnish" class="form-select" id="varnish-choices">${varnishList}</select></div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column m-2">
+                                                <button type="submit" class="btn btn-outline-primary btn-lg mt-3 mb-2" id="add-to-basket">Ajouter au panier <i class="fas fa-cart-plus"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <button type="submit" id="add-to-basket">Ajouter au panier <i class="fas fa-cart-plus"></i></button>
                                 </div>
                             </div>`
     return divProduct;
