@@ -14,12 +14,12 @@ window.onload = async () => {
 
 function createCard(product){
     const div = document.createElement("div");
-    div.innerHTML = `<div class="card">
-                        <img src="${product.imageUrl}" class="img-fluid card-img-top" alt="product image"></img>
+    div.innerHTML = `<div class="card m-5">
+                            <img src="${product.imageUrl}" class="img-fluid card-img-top" alt="product image"></img>
                             <div class="card-body">
                                 <h2 class="card-title">${product.name}</h2>
-                                <p class="card-text">${product.description}</p>
-                                <p>${product.price/100}€</p>
+                                <p class="card-text fs-3">${product.description}</p>
+                                <p class="card-text fs-3 fw-bold">${product.price/100}€</p>
                                 <a href="/frontend/view/product/product.html?id=${product._id}" class="stretched-link text-dark"></a>
                             </div>
                     </div>`
