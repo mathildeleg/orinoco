@@ -46,15 +46,28 @@ function displayFormData(orderData){
     formData.append(formCard);
 }
 
+function createHTMLProductsOrdered(){
+    const order = JSON.parse(localStorage.getItem("order"));
+    order.products.forEach((product) => {
+        productName = product.name;
+        productPrice = product.price / 100;
+    });
+    const productsListHTML = document.createElement("div");
+    productsListHTML.innerHTML = `<div class="card-body">
+                                        <div class="card-text">${productName}</div>
+                                        <div class="card-text">${productPrice} €</div>
+                                </div>`
+    return productsListHTML;
+}
+
 // Display the list of products in the order
 function displayProductsOrdered(){
-    const order = JSON.parse(localStorage.getItem("order"));
-    const productsCards = document.getElementById("order-products");
-    order.products.forEach((product) => {
-        productsCards.append(product.name);
-        productsCards.append(product.price / 100);
-    });
+    const productsList = createHTMLProductsOrdered();
+    const productsCardsHTML = document.getElementById("order-products");
+    productsCardsHTML.append(productsList);
 }
+
+console.log(displayProductsOrdered());
 
 // Calculate price of basket from the list of products in basket
 function getBasketPrice(){
