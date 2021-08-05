@@ -27,13 +27,15 @@ window.onload = async () => {
 // Creates entirety of basket content and its card
 function createHTMLBasketCard(basketContent){
     const basketCard = document.createElement("div");
-    basketCard.innerHTML = `<div class="card">
+    basketCard.innerHTML = `<div class="card my-4">
                                 <div class="card-body">
                                     <img src="${basketContent.image}" class="img-fluid card-img-top" alt="product image"></img>
-                                    <h2 class="card-title">${basketContent.name}</h2>
-                                    <p>Vernis : ${basketContent.varnish}</p>
-                                    <p>Prix : ${basketContent.price}€</p>
-                                    <button type="submit" onclick="removeItemFromBasket('${basketContent.id}')">Retirer du panier</button>
+                                    <h2 class="card-title text-center pt-3">${basketContent.name}</h2>
+                                    <div class="d-flex row justify-content-around">
+                                        <p class="card-text">Vernis : ${basketContent.varnish}</p>
+                                        <p class="card-text">Prix : ${basketContent.price}€</p>
+                                    </div>
+                                    <button type="submit" onclick="removeItemFromBasket('${basketContent.id}')" class="btn btn-primary">Retirer du panier</button>
                                 </div>
                             </div>`;
     return basketCard;
@@ -52,7 +54,7 @@ function isBasketEmpty(basketItemList){
 // If basket is empty, display empty div
 function displayEmptyBasket(){
     const basketCards = document.getElementById("basket-container");
-    const emptyBasket = `<div class="card">
+    const emptyBasket = `<div class="card m-5">
                             <div class="card-body">Votre panier est vide</div>
                         </div>`;
     basketCards.innerHTML = emptyBasket;
@@ -123,7 +125,7 @@ function removeItemFromBasket(idItem){
 function displayForm(){
     const form = document.querySelector("#basket-container");
     const formDiv = 
-        `<div>
+        `<div class="my-4">
             <h2 class="row justify-content-md-center mt-4">Vos coordonnées</h2>
             <form class="row g-3" method="post">
                 <div class="col-md-6">
