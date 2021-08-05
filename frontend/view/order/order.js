@@ -24,12 +24,12 @@ function displayOrderId(order){
 function createHTMLFormData(order){
     const divForm = document.createElement("div");
     divForm.innerHTML = `<div class="card">
-                                    <div class="card-body">
-                                        <div class="card-text">${order.contact.firstName}</div>
-                                        <div class="card-text">${order.contact.lastName}</div>
-                                        <div class="card-text">${order.contact.address}</div>
-                                        <div class="card-text">${order.contact.city}</div>
-                                        <div class="card-text">${order.contact.email}</div>
+                                    <div class="card-body text-center">
+                                        <div class="card-text">Prénom : ${order.contact.firstName}</div>
+                                        <div class="card-text">Nom : ${order.contact.lastName}</div>
+                                        <div class="card-text">Adresse : ${order.contact.address}</div>
+                                        <div class="card-text">Ville : ${order.contact.city}</div>
+                                        <div class="card-text">Adresse e-mail : ${order.contact.email}</div>
                                     </div>
                                 </div>`
     return divForm;
