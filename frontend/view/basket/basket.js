@@ -82,7 +82,7 @@ function getBasketPrice(basketItemList){
 function displayPrice(totalPrice){
     const basketCards = document.getElementById("basket-container");
     // Create totalPrice HTML
-    const totalPriceDiv = `<div class="card">
+    const totalPriceDiv = `<div class="card m-5">
                                 <div class="card-body">Prix total de votre panier : ${totalPrice} €</div>
                             </div>`
     // insert totalPrice HTML below the product cards
@@ -124,38 +124,38 @@ function removeItemFromBasket(idItem){
 // Display the form after the basket
 function displayForm(){
     const form = document.querySelector("#basket-container");
-    const formDiv = 
-        `<div class="my-4">
+    const formDiv = `
+    <div class="my-4">
             <h2 class="row justify-content-md-center mt-4">Vos coordonnées</h2>
-            <form class="row g-3" method="post">
+            <form class="row g-3" method="post" novalidate>
                 <div class="col-md-6">
                   <label for="first-name" class="form-label m-2">Votre prénom</label>
                   <input type="text" class="form-control" name="first-name" id="first-name" required>
-                  <div class="invalid-feedback" id="first-name-error"></div>
+                  <div class="text-danger p-2" id="first-name-error"></div>
                 </div>
 
                 <div class="col-md-6">
                   <label for="last-name" class="form-label m-2">Votre nom</label>
                   <input type="text" class="form-control" name="last-name" id="last-name" required>
-                  <div id="last-name-error"></div>
+                  <div class="text-danger p-2" id="last-name-error"></div>
                 </div>
 
                 <div class="col-12">
                   <label for="address" class="form-label m-2">Votre adresse</label>
                   <input type="text" class="form-control" name="address" id="address" for="address" placeholder="50 rue Pasteur" required>
-                  <div id="address-error"></div>
+                  <div class="text-danger p-2" id="address-error"></div>
                 </div>
 
                 <div class="col-md-6">
                   <label for="city" class="form-label m-2">Votre ville</label>
                   <input type="text" class="form-control" name="city" id="city" for="city" required>
-                  <div id="city-error"></div>
+                  <div class="text-danger p-2" id="city-error"></div>
                 </div>
 
                 <div class="col-md-6">
                     <label for="email" class="form-label m-2">Votre adresse e-mail</label>
                     <input type="email" class="form-control" name="email" id="email" required>
-                    <div id="email-error"></div>
+                    <div class="text-danger p-2" id="email-error"></div>
                   </div>
 
                 <div class="col-12">
@@ -178,35 +178,35 @@ function displayError(formData){
 // // Display error in the "First Name" part of the form to the user
 function displayErrorFirstName(formData){
     if(!FormValidation.isTextValid(formData.firstName)){
-        document.getElementById("first-name-error").innerText = `error first name`;
+        document.getElementById("first-name-error").innerText = `Veuillez entrer votre prénom.`;
     }
 }
 
 // // Display error in the "Last Name" part of the form to the user
 function displayErrorLastName(formData){
     if(!FormValidation.isTextValid(formData.lastName)){
-        document.getElementById("last-name-error").innerText = `error last name`;
+        document.getElementById("last-name-error").innerText = `Veuillez entrer votre nom.`;
     }
 }
 
 // // Display error in the "City" part of the form to the user
 function displayErrorCity(formData){
     if(!FormValidation.isTextValid(formData.city)){
-        document.getElementById("city-error").innerText = `error city`;
+        document.getElementById("city-error").innerText = `Veuillez entrer votre ville.`;
     }
 }
 
 // // Display error in the "Address" part of the form to the user
 function displayErrorAddress(formData){
     if(!FormValidation.isTextValid(formData.address)){
-        document.getElementById("address-error").innerText = `error address`;
+        document.getElementById("address-error").innerText = `Veuillez entrer votre adresse.`;
     }
 }
 
 // // Display error in the "Email" part of the form to the user
 function displayErrorEmail(formData){
     if(!FormValidation.isTextValid(formData.email)){
-        document.getElementById("email-error").innerText = `error email`;
+        document.getElementById("email-error").innerText = `Veuillez entrer votre adresse e-mail.`;
     }
 }
 
@@ -271,6 +271,7 @@ function initSubmitButton(){
             // Fetch order data (id, list of products and form)
             postOrder();
             // Load to confirmation page
+            // window.location.href = "/frontend/view/basket/basket.html";
             window.location.href = "/frontend/view/order/order.html";
         }
     })
