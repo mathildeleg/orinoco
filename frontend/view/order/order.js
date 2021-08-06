@@ -49,10 +49,16 @@ function displayFormData(orderData){
 // Create HTML for one product ordered
 function createHTMLProductOrdered(product){
     const productsListHTML = document.createElement("div");
-    productsListHTML.innerHTML = `<div class="card-body">
-                                        <div class="card-text">${product.name}</div>
-                                        <div class="card-text">${product.price / 100} €</div>
-                                </div>`
+    productsListHTML.innerHTML = `
+    <div class="mb-3">
+        <div class="d-flex justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">${product.name}</h6>
+                <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">${product.price / 100} €</span>
+        </div>
+    </div>`
     return productsListHTML;
 }
 // Get data from order in order to get each product name

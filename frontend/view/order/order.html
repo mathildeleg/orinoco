@@ -22,57 +22,97 @@
                 <a href="/frontend/view/home/home.html" title="accueil" class="navbar-brand">
                     <img src="/frontend/orinoco.png" alt="logo Orinico">
                 </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse ml-auto" id="navbarContent">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item px-5">
-                    <a class="nav-link active" href="#">Votre compte</a>
-                  </li>
-                  <li class="nav-item px-5">
-                    <a class="nav-link" href="#">Vos favoris</a>
-                  </li>
-                  <li class="nav-item px-5">
-                    <a href="/frontend/view/basket/basket.html" class="nav-link text-dark" title="panier"><i class="fas fa-shopping-basket"></i></a>
-                  </li>
-                </ul>
-              </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse ml-auto" id="navbarContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item px-5">
+                            <a class="nav-link active" href="#">Votre compte</a>
+                        </li>
+                        <li class="nav-item px-5">
+                            <a class="nav-link" href="#">Vos favoris</a>
+                        </li>
+                        <li class="nav-item px-5">
+                            <a href="/frontend/view/basket/basket.html" class="nav-link text-dark" title="panier"><i
+                                    class="fas fa-shopping-basket"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
-    <section class="container">
+    <!-- <section class="container">
         <div id="order-container">
-            <!-- Confirmation de la commande -->
             <div class="card border-dark my-5">
-                <h2 class="card-header text-center p-3">Merci pour votre commande !</h2>
-                <div class="card-body">
-                    <div class="row px-4">
+                <div class="col-md-7 col-lg-8">
+                    <h2 class="card-header text-center p-3">Merci pour votre commande !</h2>
+                    <div class="card-body">
+                        <div class="row px-4">
+                        </div>
                         <h5 class="card-title p-2">Numéro de votre commande :</h5>
                         <div id="order-id" class="p-2"></div>
                     </div>
 
-                    <div class="row px-4">
-                        <h5 class="card-title p-2">Rappel de votre commande : </h5>
-                        <div id="order-products" class="p-2"></div>
-                    </div>
-                    
-                    <div class="row px-4">
-                        <h5 class="card-title p-2">Prix total de votre commande :</h5>
-                        <div id="total-price" class="p-2"></div>
+                    <div class="row g-5">
+                        <div class="col-md-5 col-lg-4 order-md-last">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-primary">Votre commande</span>
+                            </h4>
+                            <div id="order-products" class="p-2"></div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <span>Prix total</span>
+                                <div id="total-price" class="p-2"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-                    <div class="card border-dark my-5">
-                            <h3 class="card-title text-center m-3">Informations de paiement :</h3>
-                        <div id="form-data" class="card-text">
+            <div class="card border-dark my-5">
+                <h3 class="card-title text-center m-3">Informations de paiement :</h3>
+                <div id="form-data" class="card-text">
 
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="container">
+        <div id="order-container">
+            <div class="card border-dark my-5 p-4">
+                <h2 class="text-center pb-4">Merci pour votre commande !</h2>
+                <div class="d-flex row">
+                    <div class="px-4 pb-5 col-sm">
+                        <h5 class="card-title px-5 pt-3">Numéro de votre commande :</h5>
+                        <div id="order-id" class="px-5"></div>
+                    </div>
+
+                    <div class="col-sm d-flex">
+                        <div class="col-lg-10">
+                            <h4 class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary p-2">Votre commande</span>
+                            </h4>
+                            <div id="order-products" class="p-2"></div>
+                            
+                            <div class="d-flex justify-content-around align-items-center pb-3">
+                                <span>Prix total</span>
+                                <div id="total-price"></div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="card border-dark my-5">
+                <h3 class="card-title text-center m-3">Informations de paiement :</h3>
+                <div id="form-data" class="card-text"></div>
+            </div>
         </div>
     </section>
+
 
     <script src="/frontend/view/order/order.js"></script>
 
