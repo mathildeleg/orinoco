@@ -2,9 +2,9 @@
 function fetchOrder(){
     const order = JSON.parse(localStorage.getItem("order"));
     displayOrderId(order);
-    displayProductsOrdered();
     displayFormData(order);
     displayTotalPrice();
+    displayProductList(order);
 }
 
 // Display order confirmation
@@ -46,28 +46,28 @@ function displayFormData(orderData){
     formData.append(formCard);
 }
 
-function createHTMLProductsOrdered(){
-    const order = JSON.parse(localStorage.getItem("order"));
-    order.products.forEach((product) => {
-        productName = product.name;
-        productPrice = product.price / 100;
-    });
+// Create HTML for one product ordered
+function createHTMLProductOrdered(product){
     const productsListHTML = document.createElement("div");
     productsListHTML.innerHTML = `<div class="card-body">
-                                        <div class="card-text">${productName}</div>
-                                        <div class="card-text">${productPrice} €</div>
+                                        <div class="card-text">${product.name}</div>
+                                        <div class="card-text">${product.price / 100} €</div>
                                 </div>`
     return productsListHTML;
 }
-
-// Display the list of products in the order
-function displayProductsOrdered(){
-    const productsList = createHTMLProductsOrdered();
-    const productsCardsHTML = document.getElementById("order-products");
-    productsCardsHTML.append(productsList);
+// Get data from order in order to get each product name
+function createHTMLProductsList(order){
+    return order.products.map(createHTMLProductOrdered);
 }
 
-console.log(displayProductsOrdered());
+// Display the list of products in the order
+function displayProductList(order){
+    const productsCardsHTML = document.getElementById("order-products");
+    const productsList = createHTMLProductsList(order);
+    productsList.forEach(div => {
+        productsCardsHTML.append(div);
+    })
+}
 
 // Calculate price of basket from the list of products in basket
 function getBasketPrice(){
