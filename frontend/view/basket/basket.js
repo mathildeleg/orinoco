@@ -166,7 +166,7 @@ function displayForm(){
     form.insertAdjacentHTML("afterend", formDiv);
 }
 
-// // Display error for each part of the form to the user by using the functions below
+// Display error for each part of the form to the user by using the functions below
 function displayError(formData){
     displayErrorFirstName(formData);
     displayErrorLastName(formData);
@@ -175,42 +175,42 @@ function displayError(formData){
     displayErrorEmail(formData);
 }
 
-// // Display error in the "First Name" part of the form to the user
+// Display error in the "First Name" part of the form to the user
 function displayErrorFirstName(formData){
     if(!FormValidation.isTextValid(formData.firstName)){
         document.getElementById("first-name-error").innerText = `Veuillez entrer votre prénom.`;
     }
 }
 
-// // Display error in the "Last Name" part of the form to the user
+// Display error in the "Last Name" part of the form to the user
 function displayErrorLastName(formData){
     if(!FormValidation.isTextValid(formData.lastName)){
         document.getElementById("last-name-error").innerText = `Veuillez entrer votre nom.`;
     }
 }
 
-// // Display error in the "City" part of the form to the user
+// Display error in the "City" part of the form to the user
 function displayErrorCity(formData){
     if(!FormValidation.isTextValid(formData.city)){
         document.getElementById("city-error").innerText = `Veuillez entrer votre ville.`;
     }
 }
 
-// // Display error in the "Address" part of the form to the user
+// Display error in the "Address" part of the form to the user
 function displayErrorAddress(formData){
     if(!FormValidation.isTextValid(formData.address)){
         document.getElementById("address-error").innerText = `Veuillez entrer votre adresse.`;
     }
 }
 
-// // Display error in the "Email" part of the form to the user
+// Display error in the "Email" part of the form to the user
 function displayErrorEmail(formData){
     if(!FormValidation.isTextValid(formData.email)){
         document.getElementById("email-error").innerText = `Veuillez entrer votre adresse e-mail.`;
     }
 }
 
-// // Check whether the form is valid (if it's correctly filled)
+// Check whether the form is valid (if it's correctly filled)
 function isFormValid(formData){
     if(FormValidation.isTextValid(formData.firstName) 
     && FormValidation.isTextValid(formData.lastName) 
@@ -264,14 +264,13 @@ function initSubmitButton(){
             city: document.querySelector("#city").value,
             email: document.querySelector("#email").value.toLowerCase(),
         }
-        // 
+        // Check whether form is valid or not
         if(!isFormValid(formData)){
             displayError(formData);
         }else{
             // Fetch order data (id, list of products and form)
             postOrder();
             // Load to confirmation page
-            // window.location.href = "/frontend/view/basket/basket.html";
             window.location.href = "/frontend/view/order/order.html";
         }
     })

@@ -61,6 +61,7 @@ function createHTMLProductOrdered(product){
     </div>`
     return productsListHTML;
 }
+
 // Get data from order in order to get each product name
 function createHTMLProductsList(order){
     return order.products.map(createHTMLProductOrdered);
