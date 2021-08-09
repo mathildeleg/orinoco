@@ -1,9 +1,13 @@
 // Fetch API
 async function fetchProductById(id){
     const res = await fetch(`http://localhost:3000/api/furniture/${id}`);
-    const product = await res.json();
-    displayProduct(product);
-    addProductToBasket(product);
+    try {
+        const product = await res.json();
+        displayProduct(product);
+        addProductToBasket(product);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 window.onload = async () => {

@@ -1,9 +1,12 @@
 // Fetch API
-
 async function fetchProduct(){
     const res = await fetch('http://localhost:3000/api/furniture');
-    const products = await res.json();
-    createCardList(products);
+    try {
+        const products = await res.json();
+        createCardList(products);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 window.onload = async () => {
@@ -11,7 +14,6 @@ window.onload = async () => {
 }
 
 // Generates list of products
-
 function createCard(product){
     const div = document.createElement("div");
     div.innerHTML = `<div class="card m-5">
