@@ -223,7 +223,7 @@ function isFormValid(formData){
 }
 
 // Fetch order data (id, list of products and form)
-async function postOrder(){
+function postOrder(){
     // Get data from the form
     const formData = {
         firstName: document.querySelector("#first-name").value,
@@ -236,7 +236,7 @@ async function postOrder(){
     const basketItemList = JSON.parse(localStorage.getItem("productInBasket"));
     const productsId = basketItemList.map(product => product.id);
     // Fetch order data (id, list of products and form)
-    const res = await fetch("http://localhost:3000/api/furniture/order", {
+    fetch("http://localhost:3000/api/furniture/order", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -247,8 +247,11 @@ async function postOrder(){
             products: productsId,
         })
     })
-    const order = await res.json();
-    localStorage.setItem("order", JSON.stringify(order));
+    .then(res => res.json())
+    .then(data => {
+        localStorage.setItem("order", JSON.stringify(data));
+    })
+    .catch(error => console.error(error));
 }
 
 // Create button "submit order" with event listener
