@@ -83,6 +83,7 @@ function addProductToBasket(product){
         function basketLocalStorage(){
             basketContent.push(productAddedToBasket);
             localStorage.setItem("productInBasket", JSON.stringify(basketContent));
+            window.alert("Ce produit a été ajouté à votre panier !");
         }
 
         // If products already are in the local storage
