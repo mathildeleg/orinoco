@@ -118,7 +118,7 @@ function removeItemFromBasket(idItem){
     const newbasket = basket.filter((item,i) => i !== index)
     localStorage.setItem("productInBasket", JSON.stringify(newbasket));
     // Reload the page
-    window.location.href = "/frontend/view/basket/basket.html";
+    window.location.href = "/view/basket/basket.html";
 }
 
 // Display the form after the basket
@@ -236,7 +236,7 @@ function postOrder(){
     const basketItemList = JSON.parse(localStorage.getItem("productInBasket"));
     const productsId = basketItemList.map(product => product.id);
     // Fetch order data (id, list of products and form)
-    fetch("http://localhost:3000/api/furniture/order", {
+    fetch(`${urlMonAPI}/api/furniture/order`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -274,7 +274,7 @@ function initSubmitButton(){
             // Fetch order data (id, list of products and form)
             postOrder();
             // Load to confirmation page
-            window.location.href = "/frontend/view/order/order.html";
+            window.location.href = "/view/order/order.html";
         }
     })
 }

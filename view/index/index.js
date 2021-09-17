@@ -1,6 +1,6 @@
 // Fetch API
 async function fetchProduct(){
-    const res = await fetch('http://localhost:3000/api/furniture');
+    const res = await fetch(`${urlMonAPI}/api/furniture`);
     try {
         const products = await res.json();
         createCardList(products);
@@ -22,7 +22,7 @@ function createCard(product){
                                 <h2 class="card-title">${product.name}</h2>
                                 <p class="card-text fs-3">${product.description}</p>
                                 <p class="card-text fs-3 fw-bold">${product.price/100}€</p>
-                                <a href="/frontend/view/product/product.html?id=${product._id}" class="stretched-link text-dark"></a>
+                                <a href="/view/product/product.html?id=${product._id}" class="stretched-link text-dark"></a>
                             </div>
                     </div>`
     return div;
