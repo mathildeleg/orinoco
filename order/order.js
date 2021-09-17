@@ -8,7 +8,9 @@ function fetchOrder(){
 }
 
 // Display order confirmation
-window.onload = fetchOrder();
+window.onload = async () => {
+    fetchOrder();
+}
 
 // Create HTML in order to display the id of the order
 function createHTMLOrderId(order){
