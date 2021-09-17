@@ -118,7 +118,7 @@ function removeItemFromBasket(idItem){
     const newbasket = basket.filter((item,i) => i !== index)
     localStorage.setItem("productInBasket", JSON.stringify(newbasket));
     // Reload the page
-    window.location.href = "/view/basket/basket.html";
+    window.location.href = "/basket/basket.html";
 }
 
 // Display the form after the basket
@@ -274,7 +274,7 @@ function initSubmitButton(){
             // Fetch order data (id, list of products and form)
             postOrder();
             // Load to confirmation page
-            window.location.href = "/view/order/order.html";
+            window.location.href = "/order/order.html";
         }
     })
 }

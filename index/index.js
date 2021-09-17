@@ -22,7 +22,7 @@ function createCard(product){
                                 <h2 class="card-title">${product.name}</h2>
                                 <p class="card-text fs-3">${product.description}</p>
                                 <p class="card-text fs-3 fw-bold">${product.price/100}€</p>
-                                <a href="/view/product/product.html?id=${product._id}" class="stretched-link text-dark"></a>
+                                <a href="/product/product.html?id=${product._id}" class="stretched-link text-dark"></a>
                             </div>
                     </div>`
     return div;
