@@ -1,17 +1,30 @@
 // Fetch API
 async function fetchProductById(id){
-    const res = await fetch(`${urlMonAPI}/api/furniture/${id}`);
     try {
-        const product = await res.json();
-        displayProduct(product);
-        addProductToBasket(product);
+        const res = await fetch(`${urlMonAPI}/api/furniture/${id}`);
+        if(res.ok) {
+            const product = await res.json();
+            displayProduct(product);
+            addProductToBasket(product);
+        } else {
+            displayErrorProduct();
+        }
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 }
 
 window.onload = async () => {
     fetchProductById(getId());
+}
+
+// Tells user product doesn't exist
+function displayErrorProduct(){
+    const errorProductContainer = document.getElementById("error-product")
+    errorProductContainer.innerHTML = `<div class="card m-5">
+                                            <div class="card-body">Ce produit n'existe pas</div>
+                                        </div>`
+    return errorProductContainer;
 }
 
 // Get url id
