@@ -1,10 +1,10 @@
 // RegEx for form
 function isTextValid(text){
-        return /^[A-Za-z][^0-9_!¡?÷?¿\\/+=@#$%ˆ&*¨(){}|~<>;:[\]]{1,20}$/.test(text)
+        return /^[A-Za-z][^0-9_!¡?÷?¿\/+=@#$%ˆ&*¨(){}|~<>;:[\]]{1,20}$/.test(text)
 }
 
 function isAddressValid(address){
-    return /^([0-9]{1,6})([a-zA-Z\s][^0-9._!¡?÷?¿\\/+=@#$%ˆ&*(){}|~<>;:[\]]{3,})$/.test(address)
+    return /^([0-9]{1,6})([a-zA-Z\s][^0-9._!¡?÷?¿\/+=@#$%ˆ&*(){}|~<>;:[\]]{3,})$/.test(address)
 }
 
 function isEmailValid(email){
@@ -166,15 +166,6 @@ function displayForm(){
     form.insertAdjacentHTML("afterend", formDiv);
 }
 
-// Display error for each part of the form to the user by using the functions below
-function displayError(formData){
-    displayErrorFirstName(formData);
-    displayErrorLastName(formData);
-    displayErrorCity(formData);
-    displayErrorAddress(formData);
-    displayErrorEmail(formData);
-}
-
 // Display error in the "First Name" part of the form to the user
 function displayErrorFirstName(formData){
     if(!FormValidation.isTextValid(formData.firstName)){
@@ -198,14 +189,14 @@ function displayErrorCity(formData){
 
 // Display error in the "Address" part of the form to the user
 function displayErrorAddress(formData){
-    if(!FormValidation.isTextValid(formData.address)){
+    if(!FormValidation.isAddressValid(formData.address)){
         document.getElementById("address-error").innerText = `Veuillez entrer votre adresse.`;
     }
 }
 
 // Display error in the "Email" part of the form to the user
 function displayErrorEmail(formData){
-    if(!FormValidation.isTextValid(formData.email)){
+    if(!FormValidation.isEmailValid(formData.email)){
         document.getElementById("email-error").innerText = `Veuillez entrer votre adresse e-mail.`;
     }
 }
@@ -220,6 +211,15 @@ function isFormValid(formData){
         return true;
     }
         return false;
+}
+
+// Display error for each part of the form to the user by using the functions below
+function displayError(formData){
+    displayErrorFirstName(formData);
+    displayErrorLastName(formData);
+    displayErrorCity(formData);
+    displayErrorAddress(formData);
+    displayErrorEmail(formData);
 }
 
 // Fetch order data (id, list of products and form)
