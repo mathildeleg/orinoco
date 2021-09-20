@@ -5,11 +5,13 @@ function fetchOrder(){
     displayFormData(order);
     displayTotalPrice();
     displayProductList(order);
+    localStorage.removeItem("order");
 }
 
 // Display order confirmation
 window.onload = async () => {
     fetchOrder();
+    localStorage.removeItem("productInBasket");
 }
 
 // Create HTML in order to display the id of the order
